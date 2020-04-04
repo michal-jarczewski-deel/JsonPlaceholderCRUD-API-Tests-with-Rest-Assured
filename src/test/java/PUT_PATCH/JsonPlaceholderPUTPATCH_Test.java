@@ -2,6 +2,7 @@ package PUT_PATCH;
 
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
@@ -14,33 +15,36 @@ public class JsonPlaceholderPUTPATCH_Test {
 
     @Test
     public void jsonPlaceholderUpdateUserPUTTest() {
-        String jsonBody = "{\n" +
-                "  \"id\": 1,\n" +
-                "  \"name\": \"Michael Test PUT\",\n" +
-                "  \"username\": \"bohato\",\n" +
-                "  \"email\": \"professional@email.biz\",\n" +
-                "  \"address\": {\n" +
-                "    \"street\": \"Kulas Light\",\n" +
-                "    \"suite\": \"Apt. 556\",\n" +
-                "    \"city\": \"Gwenborough\",\n" +
-                "    \"zipcode\": \"92998-3874\",\n" +
-                "    \"geo\": {\n" +
-                "      \"lat\": \"-37.3159\",\n" +
-                "      \"lng\": \"81.1496\"\n" +
-                "    }\n" +
-                "  },\n" +
-                "  \"phone\": \"1-770-736-8031 x56442\",\n" +
-                "  \"website\": \"hildegard.org\",\n" +
-                "  \"company\": {\n" +
-                "    \"name\": \"Romaguera-Crona\",\n" +
-                "    \"catchPhrase\": \"Multi-layered client-server neural-net\",\n" +
-                "    \"bs\": \"harness real-time e-markets\"\n" +
-                "  }\n" +
-                "}";
+        JSONObject user = new JSONObject();
+        user.put("name", "Michael Update PUT");
+        user.put("username", "bohato");
+        user.put("email", "email@PUTtesting.com");
+        user.put("phone", "999666333");
+        user.put("website", "www.google.com");
+
+        JSONObject geo = new JSONObject();
+        geo.put("lat", "-37.3159");
+        geo.put("lng", "81.1496");
+
+        JSONObject address = new JSONObject();
+        address.put("street", "Kulas Light");
+        address.put("suite", "Apt. 556");
+        address.put("city", "Gwenborough");
+        address.put("zipcode", "92998-3874");
+        address.put("geo", geo);
+
+        user.put("address", address);
+
+        JSONObject company = new JSONObject();
+        company.put("name", "Romaguera-Crona");
+        company.put("catchPhrase", "Multi-layered client-server neural-net");
+        company.put("bs", "Multi-layered client-server neural-net");
+
+        user.put("company", company);
 
         Response response = given()
                 .contentType("application/json")
-                .body(jsonBody)
+                .body(user.toString())
                 .when()
                 .put(BASE_URL + USERS + "/1")
                 .then()
@@ -50,29 +54,23 @@ public class JsonPlaceholderPUTPATCH_Test {
 
         JsonPath json = response.jsonPath();
 
-        assertEquals("Michael Test PUT", json.get("name"));
+        assertEquals("Michael Update PUT", json.get("name"));
         assertEquals("bohato", json.get("username"));
-        assertEquals("professional@email.biz", json.get("email"));
+        assertEquals("email@PUTtesting.com", json.get("email"));
     }
 
     @Test
     public void jsonPlaceholderUpdateUserPATCHTest() {
-        String jsonBody = "{\n" +
-                "  \"address\": {\n" +
-                "    \"street\": \"New street address PATCH\",\n" +
-                "    \"suite\": \"Apt. 556\",\n" +
-                "    \"city\": \"New York City\",\n" +
-                "    \"zipcode\": \"92998-3874\",\n" +
-                "    \"geo\": {\n" +
-                "      \"lat\": \"-37.3159\",\n" +
-                "      \"lng\": \"81.1496\"\n" +
-                "    }\n" +
-                "  }\n" +
-                "}";
+        JSONObject addressDetails = new JSONObject();
+        addressDetails.put("street", "New street address PATCH");
+        addressDetails.put("city", "New York City");
+
+        JSONObject addressUpdate = new JSONObject();
+        addressUpdate.put("address", addressDetails);
 
         Response response = given()
                 .contentType("application/json")
-                .body(jsonBody)
+                .body(addressUpdate.toString())
                 .when()
                 .patch(BASE_URL + USERS + "/1")
                 .then()
