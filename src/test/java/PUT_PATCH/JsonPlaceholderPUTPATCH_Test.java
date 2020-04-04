@@ -1,5 +1,6 @@
 package PUT_PATCH;
 
+import com.github.javafaker.Faker;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.json.JSONObject;
@@ -15,12 +16,20 @@ public class JsonPlaceholderPUTPATCH_Test {
 
     @Test
     public void jsonPlaceholderUpdateUserPUTTest() {
+        Faker faker = new Faker();
+
+        String fakeName = faker.name().fullName();
+        String fakeUsername = faker.name().username();
+        String fakeEmail = faker.internet().emailAddress();
+        String fakePhone = faker.phoneNumber().phoneNumber();
+        String fakeWebsite = faker.internet().url();
+
         JSONObject user = new JSONObject();
-        user.put("name", "Michael Update PUT");
-        user.put("username", "bohato");
-        user.put("email", "email@PUTtesting.com");
-        user.put("phone", "999666333");
-        user.put("website", "www.google.com");
+        user.put("name", fakeName);
+        user.put("username", fakeUsername);
+        user.put("email", fakeEmail);
+        user.put("phone", fakePhone);
+        user.put("website", fakeWebsite);
 
         JSONObject geo = new JSONObject();
         geo.put("lat", "-37.3159");
@@ -54,16 +63,23 @@ public class JsonPlaceholderPUTPATCH_Test {
 
         JsonPath json = response.jsonPath();
 
-        assertEquals("Michael Update PUT", json.get("name"));
-        assertEquals("bohato", json.get("username"));
-        assertEquals("email@PUTtesting.com", json.get("email"));
+        assertEquals(fakeName, json.get("name"));
+        assertEquals(fakeUsername, json.get("username"));
+        assertEquals(fakeEmail, json.get("email"));
+        assertEquals(fakePhone, json.get("phone"));
+        assertEquals(fakeWebsite, json.get("website"));
     }
 
     @Test
     public void jsonPlaceholderUpdateUserPATCHTest() {
+        Faker faker = new Faker();
+
+        String fakeStreet = faker.address().streetName();
+        String fakeCity = faker.address().city();
+
         JSONObject addressDetails = new JSONObject();
-        addressDetails.put("street", "New street address PATCH");
-        addressDetails.put("city", "New York City");
+        addressDetails.put("street", fakeStreet);
+        addressDetails.put("city", fakeCity);
 
         JSONObject addressUpdate = new JSONObject();
         addressUpdate.put("address", addressDetails);
@@ -80,8 +96,8 @@ public class JsonPlaceholderPUTPATCH_Test {
 
         JsonPath json = response.jsonPath();
 
-        assertEquals("New street address PATCH", json.get("address.street"));
-        assertEquals("New York City", json.get("address.city"));
-        assertEquals("Sincere@april.biz", json.get("email")); //sanity check if old value remains
+        assertEquals(fakeStreet, json.get("address.street"));
+        assertEquals(fakeCity, json.get("address.city"));
+        assertEquals("Sincere@april.biz", json.get("email")); //sanity check if old value remains the same
     }
 }
