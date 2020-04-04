@@ -1,4 +1,4 @@
-package GET;
+package Users.GET;
 
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;

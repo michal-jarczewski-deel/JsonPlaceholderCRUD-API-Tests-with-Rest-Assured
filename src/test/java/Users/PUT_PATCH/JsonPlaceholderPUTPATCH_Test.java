@@ -1,4 +1,4 @@
-package PUT_PATCH;
+package Users.PUT_PATCH;
 
 import com.github.javafaker.Faker;
 import io.restassured.path.json.JsonPath;
