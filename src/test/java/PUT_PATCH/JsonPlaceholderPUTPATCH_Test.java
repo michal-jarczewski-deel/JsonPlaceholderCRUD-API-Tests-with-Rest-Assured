@@ -4,6 +4,8 @@ import com.github.javafaker.Faker;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.json.JSONObject;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
@@ -14,16 +16,34 @@ public class JsonPlaceholderPUTPATCH_Test {
     private final String BASE_URL = "https://jsonplaceholder.typicode.com";
     private final String USERS = "/users";
 
+    private static Faker faker;
+
+    private String fakeName;
+    private String fakeUsername;
+    private String fakeEmail;
+    private String fakePhone;
+    private String fakeWebsite;
+    private String fakeStreet;
+    private String fakeCity;
+
+    @BeforeAll
+    public static void beforeAll() {
+        faker = new Faker();
+    }
+
+    @BeforeEach
+    public void beforeEach() {
+        fakeName = faker.name().fullName();
+        fakeUsername = faker.name().username();
+        fakeEmail = faker.internet().emailAddress();
+        fakePhone = faker.phoneNumber().phoneNumber();
+        fakeWebsite = faker.internet().url();
+        fakeStreet = faker.address().streetName();
+        fakeCity = faker.address().city();
+    }
+
     @Test
     public void jsonPlaceholderUpdateUserPUTTest() {
-        Faker faker = new Faker();
-
-        String fakeName = faker.name().fullName();
-        String fakeUsername = faker.name().username();
-        String fakeEmail = faker.internet().emailAddress();
-        String fakePhone = faker.phoneNumber().phoneNumber();
-        String fakeWebsite = faker.internet().url();
-
         JSONObject user = new JSONObject();
         user.put("name", fakeName);
         user.put("username", fakeUsername);
@@ -72,11 +92,6 @@ public class JsonPlaceholderPUTPATCH_Test {
 
     @Test
     public void jsonPlaceholderUpdateUserPATCHTest() {
-        Faker faker = new Faker();
-
-        String fakeStreet = faker.address().streetName();
-        String fakeCity = faker.address().city();
-
         JSONObject addressDetails = new JSONObject();
         addressDetails.put("street", fakeStreet);
         addressDetails.put("city", fakeCity);
