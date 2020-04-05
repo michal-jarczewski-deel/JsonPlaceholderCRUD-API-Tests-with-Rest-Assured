@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class JsonPlaceholderDELETE_Test {
+public class JsonPlaceholderDELETEUsersTest {
 
     private final String BASE_URL = "https://jsonplaceholder.typicode.com";
     private final String USERS = "/users";

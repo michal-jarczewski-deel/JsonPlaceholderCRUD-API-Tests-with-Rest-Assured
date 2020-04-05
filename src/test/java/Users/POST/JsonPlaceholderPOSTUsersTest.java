@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class JsonPlaceholderPOST_Test {
+public class JsonPlaceholderPOSTUsersTest {
 
     private final String BASE_URL = "https://jsonplaceholder.typicode.com";
     private final String USERS = "/users";
