@@ -99,7 +99,7 @@ public class JsonPlaceholderGETUsersTest {
         JsonPath json = response.jsonPath();
         List<String> emails = json.getList("email");
 
-        boolean ifAnyUserWithPlAsEmailDomainExists = emails.stream().allMatch(email -> !email.endsWith("pl"));
+        boolean ifAnyUserWithPlAsEmailDomainExists = emails.stream().allMatch(email -> !email.endsWith(".pl"));
 
         assertTrue(ifAnyUserWithPlAsEmailDomainExists);
     }
