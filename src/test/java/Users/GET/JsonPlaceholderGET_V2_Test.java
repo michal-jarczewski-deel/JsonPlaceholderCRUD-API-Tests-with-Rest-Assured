@@ -6,7 +6,8 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class JsonPlaceholderGET_V2_Test {
 
@@ -83,5 +84,23 @@ public class JsonPlaceholderGET_V2_Test {
         assertEquals("Leanne Graham", json.getList("name").get(0));
         assertEquals("Bret", json.getList("username").get(0));
         assertEquals("Sincere@april.biz", json.getList("email").get(0));
+    }
+
+    @Test
+    public void readAllUsersAndVerifyEndingOfEmail() {
+        Response response = given()
+                .when()
+                .get(BASE_URL + USERS)
+                .then()
+                .statusCode(200)
+                .extract()
+                .response();
+
+        JsonPath json = response.jsonPath();
+        List<String> emails = json.getList("email");
+
+        boolean ifAnyUserWithPlAsEmailDomainExists = emails.stream().allMatch(email -> !email.endsWith("pl"));
+
+        assertTrue(ifAnyUserWithPlAsEmailDomainExists);
     }
 }
