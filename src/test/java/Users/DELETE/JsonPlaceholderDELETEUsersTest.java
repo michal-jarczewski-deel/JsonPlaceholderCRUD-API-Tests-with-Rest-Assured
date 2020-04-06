@@ -1,15 +1,13 @@
 package Users.DELETE;
 
+import Utils.BaseTest;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class JsonPlaceholderDELETEUsersTest {
-
-    private final String BASE_URL = "https://jsonplaceholder.typicode.com";
-    private final String USERS = "/users";
+public class JsonPlaceholderDELETEUsersTest extends BaseTest {
 
     @Test
     public void jsonPlaceholderDeleteUser() {

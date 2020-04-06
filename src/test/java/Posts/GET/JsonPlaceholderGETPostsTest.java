@@ -1,5 +1,6 @@
 package Posts.GET;
 
+import Utils.BaseTest;
 import io.restassured.http.ContentType;
 import io.restassured.http.Method;
 import io.restassured.path.json.JsonPath;
@@ -15,10 +16,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class JsonPlaceholderGETPostsTest {
-
-    private final String BASE_URL = "https://jsonplaceholder.typicode.com";
-    private final String POSTS = "/posts";
+public class JsonPlaceholderGETPostsTest extends BaseTest {
 
     @Test
     public void jsonPlaceholderReadAllPosts() {

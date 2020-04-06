@@ -1,5 +1,6 @@
 package Users.GET;
 
+import Utils.BaseTest;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
@@ -9,14 +10,10 @@ import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class JsonPlaceholderGETUsersTest {
-
-    private final String BASE_URL = "https://jsonplaceholder.typicode.com";
-    private final String USERS = "/users";
+public class JsonPlaceholderGETUsersTest extends BaseTest {
 
     @Test
     public void jsonPlaceholderReadAllUsers() {
-
         Response response = given()
                 .when()
                 .get(BASE_URL + USERS)

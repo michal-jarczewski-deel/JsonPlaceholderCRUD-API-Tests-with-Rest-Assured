@@ -1,5 +1,6 @@
 package Users.POST;
 
+import Utils.BaseTest;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
@@ -7,10 +8,7 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class JsonPlaceholderPOSTUsersTest {
-
-    private final String BASE_URL = "https://jsonplaceholder.typicode.com";
-    private final String USERS = "/users";
+public class JsonPlaceholderPOSTUsersTest extends BaseTest {
 
     @Test
     public void jsonPlaceholderCreateNewUser() {

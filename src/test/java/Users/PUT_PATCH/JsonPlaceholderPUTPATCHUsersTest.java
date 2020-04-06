@@ -1,35 +1,16 @@
 package Users.PUT_PATCH;
 
-import com.github.javafaker.Faker;
+import Utils.BaseTest;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.json.JSONObject;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class JsonPlaceholderPUTPATCHUsersTest {
-
-    private final String BASE_URL = "https://jsonplaceholder.typicode.com";
-    private final String USERS = "/users";
-
-    private static Faker faker;
-
-    private String fakeName;
-    private String fakeUsername;
-    private String fakeEmail;
-    private String fakePhone;
-    private String fakeWebsite;
-    private String fakeStreet;
-    private String fakeCity;
-
-    @BeforeAll
-    public static void beforeAll() {
-        faker = new Faker();
-    }
+public class JsonPlaceholderPUTPATCHUsersTest extends BaseTest {
 
     @BeforeEach
     public void beforeEach() {

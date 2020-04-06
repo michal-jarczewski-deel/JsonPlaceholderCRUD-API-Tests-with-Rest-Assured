@@ -1,6 +1,6 @@
 package Posts.DELETE;
 
-import com.github.javafaker.Faker;
+import Utils.BaseTest;
 import io.restassured.http.Method;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,18 +8,10 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.when;
 
-public class JsonPlaceholderDELETEPostsTest {
-
-    private final String BASE_URL = "https://jsonplaceholder.typicode.com";
-    private final String POSTS = "/posts";
-
-    private static Faker faker;
-
-    private int randomId;
+public class JsonPlaceholderDELETEPostsTest extends BaseTest {
 
     @BeforeEach
     public void beforeEach() {
-        faker = new Faker();
         randomId = faker.number().numberBetween(1, 100);
     }
 

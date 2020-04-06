@@ -1,13 +1,12 @@
 package Posts.PUT_PATCH;
 
-import com.github.javafaker.Faker;
+import Utils.BaseTest;
 import io.restassured.http.ContentType;
 import io.restassured.http.Method;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import org.json.JSONObject;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,22 +15,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class JsonPlaceholderPUTPATCHPostsTest {
-
-    private final String BASE_URL = "https://jsonplaceholder.typicode.com";
-    private final String POSTS = "/posts";
-
-    private static Faker faker;
-
-    private int randomUserId;
-    private int randomId;
-    private String fakeTitle;
-    private String fakeBody;
-
-    @BeforeAll
-    public static void beforeAll() {
-        faker = new Faker();
-    }
+public class JsonPlaceholderPUTPATCHPostsTest extends BaseTest {
 
     @BeforeEach
     public void beforeEach() {
