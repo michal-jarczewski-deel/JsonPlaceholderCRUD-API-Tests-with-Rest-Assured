@@ -1,21 +1,20 @@
-package Users.DELETE;
+package Users;
 
 import Utils.BaseTest;
 import io.restassured.response.Response;
-import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class JsonPlaceholderDELETEUsersTest extends BaseTest {
+public class DeleteUsersTest extends BaseTest {
 
     @Test
-    public void jsonPlaceholderDeleteUser() {
+    public void deleteUser() {
         Response response = given()
                 .when()
                 .delete(BASE_URL + USERS + "/1")
                 .then()
-                .statusCode(HttpStatus.SC_OK)
+                .statusCode(200)
                 .extract()
                 .response();
     }

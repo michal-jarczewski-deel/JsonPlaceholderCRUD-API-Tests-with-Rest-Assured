@@ -1,4 +1,4 @@
-package Posts.POST;
+package Posts;
 
 import Utils.BaseTest;
 import io.restassured.http.ContentType;
@@ -15,7 +15,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class JsonPlaceholderPOSTPostsTest extends BaseTest {
+public class CreatePostsTest extends BaseTest {
 
     @BeforeEach
     public void beforeEach() {
@@ -25,7 +25,7 @@ public class JsonPlaceholderPOSTPostsTest extends BaseTest {
     }
 
     @Test
-    public void jsonPlaceholderCreateNewPost() {
+    public void createNewPost() {
         JSONObject post = new JSONObject();
         post.put("userId", randomUserId);
         post.put("title", fakeTitle);

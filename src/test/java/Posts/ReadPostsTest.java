@@ -1,4 +1,4 @@
-package Posts.GET;
+package Posts;
 
 import Utils.BaseTest;
 import io.restassured.http.ContentType;
@@ -16,10 +16,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class JsonPlaceholderGETPostsTest extends BaseTest {
+public class ReadPostsTest extends BaseTest {
 
     @Test
-    public void jsonPlaceholderReadAllPosts() {
+    public void readAllPosts() {
         Response response = when()
                 .request(Method.GET, BASE_URL + POSTS)
                 .then()
@@ -35,7 +35,7 @@ public class JsonPlaceholderGETPostsTest extends BaseTest {
     }
 
     @Test
-    public void jsonPlaceholderReadOnePost() {
+    public void readOnePost() {
         String postTitle = "eveniet quod temporibus";
         String postBody = "reprehenderit quos placeat\nvelit minima officia dolores impedit repudiandae " +
                 "molestiae nam\nvoluptas recusandae quis delectus\nofficiis harum fugiat vitae";
@@ -58,7 +58,7 @@ public class JsonPlaceholderGETPostsTest extends BaseTest {
     }
 
     @Test
-    public void jsonPlaceholderReadOnePostWithPathVariable() {
+    public void readOnePostWithPathVariable() {
         String postTitle = "qui est esse";
         String postBody = "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea " +
                 "dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\n" +
@@ -84,7 +84,7 @@ public class JsonPlaceholderGETPostsTest extends BaseTest {
     }
 
     @Test
-    public void jsonPlaceholderReadOneUserWithQueryParams() {
+    public void readOneUserWithQueryParams() {
         String postTitle = "delectus ullam et corporis nulla voluptas sequi";
         String postBody = "non et quaerat ex quae ad maiores\nmaiores recusandae totam aut " +
                 "blanditiis mollitia quas illo\nut voluptatibus voluptatem\nsimilique nostrum eum";

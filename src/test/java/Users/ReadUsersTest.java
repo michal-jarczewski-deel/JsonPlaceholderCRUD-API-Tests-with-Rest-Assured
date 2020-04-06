@@ -1,4 +1,4 @@
-package Users.GET;
+package Users;
 
 import Utils.BaseTest;
 import io.restassured.path.json.JsonPath;
@@ -10,10 +10,10 @@ import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class JsonPlaceholderGETUsersTest extends BaseTest {
+public class ReadUsersTest extends BaseTest {
 
     @Test
-    public void jsonPlaceholderReadAllUsers() {
+    public void readAllUsers() {
         Response response = given()
                 .when()
                 .get(BASE_URL + USERS)
@@ -29,7 +29,7 @@ public class JsonPlaceholderGETUsersTest extends BaseTest {
     }
 
     @Test
-    public void jsonPlaceholderReadOneUser() {
+    public void readOneUser() {
         Response response = given()
                 .when()
                 .get(BASE_URL + USERS + "/1")
@@ -47,7 +47,7 @@ public class JsonPlaceholderGETUsersTest extends BaseTest {
     }
 
     @Test
-    public void jsonPlaceholderReadOneUserWithPathVariable() {
+    public void readOneUserWithPathVariable() {
         Response response = given()
                 .pathParam("userId", 1)
                 .when()
@@ -66,7 +66,7 @@ public class JsonPlaceholderGETUsersTest extends BaseTest {
     }
 
     @Test
-    public void jsonPlaceholderReadOneUserWithQueryParams() {
+    public void readOneUserWithQueryParams() {
         Response response = given()
                 .queryParam("username", "Bret")
                 .when()

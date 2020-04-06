@@ -1,4 +1,4 @@
-package Users.PUT_PATCH;
+package Users;
 
 import Utils.BaseTest;
 import io.restassured.path.json.JsonPath;
@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class JsonPlaceholderPUTPATCHUsersTest extends BaseTest {
+public class UpdateUsersTest extends BaseTest {
 
     @BeforeEach
     public void beforeEach() {
@@ -24,7 +24,7 @@ public class JsonPlaceholderPUTPATCHUsersTest extends BaseTest {
     }
 
     @Test
-    public void jsonPlaceholderUpdateUserPUTTest() {
+    public void updateUserPUTTest() {
         JSONObject user = new JSONObject();
         user.put("name", fakeName);
         user.put("username", fakeUsername);
@@ -72,7 +72,7 @@ public class JsonPlaceholderPUTPATCHUsersTest extends BaseTest {
     }
 
     @Test
-    public void jsonPlaceholderUpdateUserPATCHTest() {
+    public void updateUserPATCHTest() {
         JSONObject addressDetails = new JSONObject();
         addressDetails.put("street", fakeStreet);
         addressDetails.put("city", fakeCity);

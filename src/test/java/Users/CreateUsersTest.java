@@ -1,4 +1,4 @@
-package Users.POST;
+package Users;
 
 import Utils.BaseTest;
 import io.restassured.path.json.JsonPath;
@@ -8,10 +8,10 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class JsonPlaceholderPOSTUsersTest extends BaseTest {
+public class CreateUsersTest extends BaseTest {
 
     @Test
-    public void jsonPlaceholderCreateNewUser() {
+    public void createNewUser() {
         String jsonBody = "{\n" +
                 "  \"id\": 1,\n" +
                 "  \"name\": \"Leanne Graham\",\n" +

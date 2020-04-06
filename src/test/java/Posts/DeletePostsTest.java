@@ -1,4 +1,4 @@
-package Posts.DELETE;
+package Posts;
 
 import Utils.BaseTest;
 import io.restassured.http.Method;
@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.when;
 
-public class JsonPlaceholderDELETEPostsTest extends BaseTest {
+public class DeletePostsTest extends BaseTest {
 
     @BeforeEach
     public void beforeEach() {
@@ -16,7 +16,7 @@ public class JsonPlaceholderDELETEPostsTest extends BaseTest {
     }
 
     @Test
-    public void jsonPlaceholderDeleteUser() {
+    public void deletePost() {
         when()
                 .request(Method.POST, BASE_URL + POSTS + "/" + randomId)
                 .then()

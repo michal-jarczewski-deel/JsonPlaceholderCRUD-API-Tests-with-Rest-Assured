@@ -1,4 +1,4 @@
-package Posts.PUT_PATCH;
+package Posts;
 
 import Utils.BaseTest;
 import io.restassured.http.ContentType;
@@ -15,7 +15,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class JsonPlaceholderPUTPATCHPostsTest extends BaseTest {
+public class UpdatePostsTest extends BaseTest {
 
     @BeforeEach
     public void beforeEach() {
